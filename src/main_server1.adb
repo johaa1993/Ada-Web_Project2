@@ -10,7 +10,7 @@ procedure Main_Server1 is
    Client_Channel : Stream_Access;
    Client_Address : Sock_Addr_Type;
    subtype Simple_String_Buffer is String (1 .. 10);
-   Client_Message_Receive_Buffer : Simple_String_Buffer;
+   Client_Message_Receive_Buffer : Simple_String_Buffer := (others => ASCII.FF);
 
 begin
    GNAT.Sockets.Initialize;

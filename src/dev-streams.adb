@@ -2,6 +2,14 @@ with Ada.Text_IO; use Ada.Text_IO;
 
 package body Dev.Streams is
 
+   procedure Read_Increment (Stream : in out Root_Stream_Type'Class; Buffer : in out Stream_Element_Array; Last : in out Stream_Element_Offset) is
+   begin
+      pragma Assert (Last < Buffer'Last);
+      Read (Stream, Buffer (Last + 1 .. Buffer'Last), Last);
+      pragma Assert (Last >= Buffer'First);
+   end;
+
+
    procedure Read (Stream : in out Root_Stream_Type'Class; Buffer : in out Stream_Element_Array) is
       Last : Stream_Element_Offset := Buffer'First - 1;
    begin
